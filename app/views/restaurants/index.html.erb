@@ -3,8 +3,8 @@
   <div id="list-restaurants" class="d-flex justify-content-center fs-3">
     <ul class="list-unstyled">
       <% @restaurants.each do |restaurant| %>
-        <li class=>
-          <strong><%= link_to restaurant.name, restaurant_path(restaurant) %></strong>
+        <li>
+          <strong><%= link_to restaurant.name, restaurant_path(restaurant), class: "text-decoration-none text-dark" %></strong>
         </li>
       <% end %>
     </ul>
