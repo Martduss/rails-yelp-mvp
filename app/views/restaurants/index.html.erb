@@ -1,14 +1,12 @@
-<div class="container">
-  <h1>Restaurants:</h1>
-  <ul>
-    <% @restaurants.each do |restaurant| %>
-      <li>
-        Name: <strong><%= link_to restaurant.name, restaurant_path(restaurant) %></strong>
-        Address: <i><%= restaurant.address %></i>
-        Contact: <%= restaurant.phone_number %>
-        Category: <%= restaurant.category %>
-      </li>
-    <% end %>
-  </ul>
+<div class="container text-center">
+  <h1 class="display-1 mb-5">Restaurants:</h1>
+  <div id="list-restaurants" class="d-flex justify-content-center fs-3">
+    <ul class="list-unstyled">
+      <% @restaurants.each do |restaurant| %>
+        <li class=>
+          <strong><%= link_to restaurant.name, restaurant_path(restaurant) %></strong>
+        </li>
+      <% end %>
+    </ul>
+  </div>
   <%= link_to "New restaurant", new_restaurant_path, class: "btn btn-primary" %>
-</div>

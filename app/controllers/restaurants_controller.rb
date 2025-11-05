@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @restaurant = Restaurant.find(params[:id])
   end
 
@@ -16,7 +17,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
     else
-      render :new, status: :unprocessable_content 
+      render :new, status: :unprocessable_content
     end
   end
 

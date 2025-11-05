@@ -1,14 +1,38 @@
-<div class="container">
-  <h1><%= @restaurant.name %></h1>
-  <h3><%= @restaurant.category %>'s food</h3>
-  <p><%= @restaurant.address %></p>
-  <p><%= @restaurant.phone_number %></p>
-  <div>
-    <h3>Reviews:</h3>
-    <% @restaurant.reviews.each do |review| %>
-      <%= review.rating %>
-      <%= review.content %>
-    <% end %>
+<div class="container text-center">
+  <div class="d-flex flex-column">
+    <div id="restaurant-infos">
+      <blockquote class="blockquote">
+        <h1 class="display-1"><%= @restaurant.name %></h1>
+        <footer class="blockquote-footer">
+          <p><i><%= @restaurant.address %></i></p>
+          <p><%= @restaurant.phone_number %></p>
+        </footer>
+      </blockquote>
+    </div>
+    <div id="reviews-box" class="d-flex flex-column mt-5">
+      <table class="table table-bordered">
+        <tr>
+          <th scope="col">#/th>
+          <th scope="col">Rating</th>
+          <th scope="col">Content</th>
+        </tr>
+        <% @restaurant.reviews.each do |review| %>
+          <tr>
+            <th scope="col"><%= review.id %></th>
+            <th scope="col"><%= review.rating %></th>
+            <th scope="col"><%= review.content %></th>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
+  <div class="mt-5 w-25">
+    <h3 class="display-6">New review:</h3>
+    <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.input :content  %>
+      <%= f.input :rating  %>
+      <%= f.submit "Submit your review", class: "btn btn-warning"%>
+    <% end %>
   <%= link_to "Back", restaurants_path, class: "btn btn-primary" %>
+  </div>
 </div>
