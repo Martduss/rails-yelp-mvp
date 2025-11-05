@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <h3><%= @restaurant.category %>'s food</h3>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <div>
+    <h3>Reviews:</h3>
+    <% @restaurant.reviews.each do |review| %>
+      <%= review.rating %>
+      <%= review.content %>
+    <% end %>
+  </div>
+  <%= link_to "Back", restaurants_path, class: "btn btn-primary" %>
+</div>
